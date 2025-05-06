@@ -46,6 +46,9 @@ pip install langchain langchain-huggingface chromadb transformers torch
 export HUGGINGFACEHUB_API_TOKEN=your_token_here
 ```
 
+4. Start Ollama
+```ollama run tinyllama
+```
 ---
 
 ## 📂 Available Notebooks
