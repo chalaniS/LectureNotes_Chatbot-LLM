@@ -32,7 +32,7 @@ This project implements two versions of a chatbot using **LangChain**, **Hugging
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/didulabhanuka/LectureNotes-Chatbot.git
+git clone https://github.com/chalaniS/LectureNotes_Chatbot-LLM
 cd ctse-chatbot
 ````
 
