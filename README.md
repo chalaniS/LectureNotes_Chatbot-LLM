@@ -1,7 +1,9 @@
 # 📚 CTSE Lecture Notes Chatbot – RetrievalQA with LLaMA3 (Ollama + LangChain)
 
-This project presents a local, offline chatbot designed to assist students by answering questions based on lecture notes from the "Current Trends in Software Engineering (SE4010)" module at SLIIT. Leveraging Retrieval-Augmented Generation (RAG) techniques, the chatbot ensures accurate and contextually relevant responses without the need for internet connectivity or external API keys.</br>
-![ss](https://github.com/user-attachments/assets/dd14bbe8-cfac-470e-a316-402cbefad106)
+This project presents a local, offline chatbot designed to assist students by answering questions based on lecture notes from the "Current Trends in Software Engineering (SE4010)" module at SLIIT. Leveraging Retrieval-Augmented Generation (RAG) techniques, the chatbot ensures accurate and contextually relevant responses without the need for internet connectivity or external API keys.</br></br>
+![Screenshot 2025-05-07 175421](https://github.com/user-attachments/assets/22b05619-c0f7-4aa4-b07f-165f9f244e61)
+
+
 
 ## 🚀 Features
 
