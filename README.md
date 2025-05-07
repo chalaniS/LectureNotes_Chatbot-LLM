@@ -60,11 +60,11 @@ ollama list
 ```
 
 ```bash
-ollama pull llamatyne
+ollama pull tinyllama
 ```
 
 ```bash
-ollama run llamatyne
+ollama run tinyllama
 ```
 
 ## 📄 Preparing Lecture Notes
