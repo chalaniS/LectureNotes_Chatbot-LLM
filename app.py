@@ -60,18 +60,62 @@ st.markdown("""
     <div class="chat-container">
 """, unsafe_allow_html=True)
 
-# Display chat messages in stacked order
-for role, msg in st.session_state.chat_history:
-    if role == "You":
-        st.markdown(
-            f"<div class='chat-message chat-user'><strong>🧑 {role}:</strong> {msg}</div>",
-            unsafe_allow_html=True
-        )
-    else:
-        st.markdown(
-            f"<div class='chat-message chat-bot'><strong>🤖 {role}:</strong> {msg}</div>",
-            unsafe_allow_html=True
-        )
+
+# Display chat history heading only when chat exists
+if st.session_state.chat_history:
+    st.markdown("### Chat History")
+
+# Chat display area (scrollable style effect)
+chat_container = st.container()
+
+# Display the latest interaction (most recent at top)
+with chat_container:
+    if len(st.session_state.chat_history) >= 2:
+        # Get the last user and bot message pair (most recent interaction)
+        last_interaction = st.session_state.chat_history[-2:]
+
+        for role, msg in last_interaction:
+            if role == "You":
+                st.markdown(
+                    f"""
+                    <div style='background-color:#DCF8C6;padding:10px;border-radius:10px;margin:5px 0;text-align:right'>
+                        <strong>🧑 You:</strong><br>{msg}
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+            else:
+                st.markdown(
+                    f"""
+                    <div style='background-color:#F1F0F0;padding:10px;border-radius:10px;margin:5px 0'>
+                        <strong>🤖 Bot:</strong><br>{msg}
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+    # Now display the rest of the chat history below the latest one
+    for role, msg in st.session_state.chat_history[:-2]:  # Skip the last two interactions already displayed
+        if role == "You":
+            st.markdown(
+                f"""
+                <div style='background-color:#DCF8C6;padding:10px;border-radius:10px;margin:5px 0;text-align:right'>
+                    <strong>🧑 You:</strong><br>{msg}
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            st.markdown(
+                f"""
+                <div style='background-color:#F1F0F0;padding:10px;border-radius:10px;margin:5px 0'>
+                    <strong>🤖 Bot:</strong><br>{msg}
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+
 
 # Close container div
 st.markdown("</div>", unsafe_allow_html=True)
