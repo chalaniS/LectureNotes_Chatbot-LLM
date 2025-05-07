@@ -43,6 +43,5 @@ hf_token.txt
 
 # Output files
 *.out
-*.pdf
 *.mp4
 *.zip
