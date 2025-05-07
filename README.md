@@ -1,75 +1,104 @@
+# 📚 CTSE Lecture Notes Chatbot – RetrievalQA with LLaMA3 (Ollama + LangChain)
 
-# 📘 CTSE Lecture Notes Chatbot – RetrievalQA with LLaMA3 (Ollama + LangChain)
+This project presents a local, offline chatbot designed to assist students by answering questions based on lecture notes from the "Current Trends in Software Engineering (SE4010)" module at SLIIT. Leveraging Retrieval-Augmented Generation (RAG) techniques, the chatbot ensures accurate and contextually relevant responses without the need for internet connectivity or external API keys.</br>
+![ss](https://github.com/user-attachments/assets/dd14bbe8-cfac-470e-a316-402cbefad106)
 
-This project is a local, offline chatbot built using LangChain, ChromaDB, and Ollama (TinyLlama or LLaMA3). It allows users to ask questions based on lecture notes from the Current Trends in Software Engineering (SE4010) module at SLIIT.
+## 🚀 Features
 
-🧠 Features
+* **Retrieval-Augmented Generation (RAG):** Combines information retrieval with generative models to provide precise answers.
+* **Local LLM Integration:** Utilizes local Large Language Models (LLMs) like LLaMA3 or TinyLlama via Ollama, ensuring data privacy and offline functionality.
+* **Efficient Document Retrieval:** Employs ChromaDB for rapid vector-based retrieval of lecture content.
+* **User-Friendly Interface:** Built with Streamlit for an intuitive and interactive user experience.
+* **No External Dependencies:** Operates without the need for API keys or internet access.([GitHub][1])
 
-* Uses Retrieval-Augmented Generation (RAG) for accurate QA
-* Powered by local LLM (Ollama + LLaMA3 / TinyLlama) – no API keys needed
-* Loads lecture notes from .txt file and embeds with Sentence Transformers
-* Uses ChromaDB for fast vector-based retrieval
-* Streamlit UI for easy question-answer interaction
+## 🗂️ Project Structure
 
-📁 File Structure
-
-Project/<br>
-│<br>
-├── app.py                            # Streamlit web interface<br>
-├── ctse\_lecture\_notes.pddf            # Your lecture notes pdf<br>
-├── llama3/<br>
-│   └── lecsnote-chatbot-SimpleRetrievalQA-llama3.ipynb   		# Notebook version<br>
-│   └── lecsnote-chatbot-ConversationalRetrievalChain-llama3.ipynb   	# Notebook version<br>
-├── chroma\_db/                        # (auto-generated vector store on first run)<br>
-└── requirements.txt                  # Python dependencies<br>
-
-⚙️ Requirements
-
-* Python 3.8+
-* Ollama installed and running locally
-* Recommended: LLaMA3 or TinyLlama model pulled via Ollama
-
-Install dependencies:
-
-pip install -r requirements.txt
-
-Start Ollama model:
-
-ollama run llama3
-
-▶️ Run the App
-
-
-4. Start Ollama
-```ollama run tinyllama
 ```
----
-``streamlit run app.py
-``
+LectureNotes_Chatbot-LLM/
+├── app.py                             # Streamlit web application
+├── chatbot.py                         # Core chatbot logic
+├── requirements.txt                   # Python dependencies
+├── ctse_lecture_notes.pdf             # Lecture notes in PDF format
+├── llama3/
+│   ├── lecsnote-chatbot-SimpleRetrievalQA-llama3.ipynb
+│   └── lecsnote-chatbot-ConversationalRetrievalChain-llama3.ipynb
+└── README.md                          # Project documentation
+```
 
+## 🛠️ Installation
 
-Then open [http://localhost:8501](http://localhost:8501) in your browser.
+### 1. Clone the Repository
 
-📝 How It Works
+```bash
+git clone https://github.com/chalaniS/LectureNotes_Chatbot-LLM.git
+cd LectureNotes_Chatbot-LLM
+```
 
-1. TextLoader loads ctse\_lecture\_notes.txt
-2. The text is split using RecursiveCharacterTextSplitter
-3. Embeddings are created using sentence-transformers/all-MiniLM-L6-v2
-4. Vectors are stored in ChromaDB
-5. RetrievalQA fetches relevant chunks based on user query
-6. Ollama (LLaMA3) generates a response
+### 2. Set Up a Virtual Environment (Optional but Recommended)
 
-🧪 Dev Notes
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-* The notebook in llama3/ can be used for experiments.
-* LLaMA3 and TinyLlama models tested via Ollama.
-* Ideal for low-latency, offline academic use cases.
+### 3. Install Dependencies
 
-📚 References
+```bash
+pip install -r requirements.txt
+```
 
-* LangChain RAG Tutorial: [https://python.langchain.com/docs/tutorials/rag/](https://python.langchain.com/docs/tutorials/rag/)
-* ChromaDB: [https://docs.trychroma.com/](https://docs.trychroma.com/)
-* Ollama: [https://ollama.com/library/llama3](https://ollama.com/library/llama3)
-* Sentence Transformers: [https://www.sbert.net/](https://www.sbert.net/)
+### 4. Install and Set Up Ollama
+
+Follow the official Ollama installation guide: [https://ollama.com](https://ollama.com)
+
+Once installed, download the desired model- TinyLlama:
+
+```bash
+ollama list
+```
+
+```bash
+ollama pull llamatyne
+```
+
+```bash
+ollama run llamatyne
+```
+
+## 📄 Preparing Lecture Notes
+
+Ensure your lecture notes are in PDF format and named `ctse_lecture_notes.pdf`. Place this file in the root directory of the project.
+
+## 🚀 Running the Application
+
+Start the Streamlit application:
+
+```bash
+streamlit run app.py
+```
+
+The chatbot interface will open in your default web browser.([GitHub][1])
+
+## 🧠 How It Works
+
+1. **Document Ingestion:** The PDF lecture notes are converted into text and segmented into manageable chunks.
+2. **Embedding Generation:** Each text chunk is transformed into a vector representation using Sentence Transformers.
+3. **Vector Storage:** These vectors are stored in ChromaDB, facilitating efficient similarity searches.
+4. **Query Handling:** When a user poses a question, the system retrieves the most relevant text chunks from ChromaDB.
+5. **Answer Generation:** The retrieved information is passed to the local LLM via LangChain, which generates a coherent and contextually appropriate response.([GitHub][2])
+
+## 📓 Notebooks
+
+The `llama3/` directory contains Jupyter notebooks that demonstrate different retrieval strategies:
+
+* **SimpleRetrievalQA:** A straightforward retrieval-based question-answering approach.
+* **ConversationalRetrievalChain:** An advanced method that maintains conversational context across multiple queries.
+
+## 📌 Notes
+
+* **Model Selection:** You can switch between different LLMs (e.g., LLaMA3, TinyLlama) by modifying the model name in the `app.py` file.
+* **Data Privacy:** All processing is done locally, ensuring that your data remains private.
+* **Customization:** Feel free to adapt the chatbot for other courses or datasets by replacing the lecture notes PDF.
+
 
 
