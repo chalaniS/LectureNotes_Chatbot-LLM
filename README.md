@@ -13,15 +13,15 @@ This project is a local, offline chatbot built using LangChain, ChromaDB, and Ol
 
 📁 File Structure
 
-your\_project/
-│
-├── app.py                            # Streamlit web interface
-├── ctse\_lecture\_notes.txt            # Your lecture notes (as plain text)
-├── llama3/
-│   └── lecsnote-chatbot-SimpleRetrievalQA-llama3.ipynb   		# Notebook version
-│   └── lecsnote-chatbot-ConversationalRetrievalChain-llama3.ipynb   	# Notebook version
-├── chroma\_db/                        # (auto-generated vector store on first run)
-└── requirements.txt                  # Python dependencies
+your\_project/<br>
+│<br>
+├── app.py                            # Streamlit web interface<br>
+├── ctse\_lecture\_notes.txt            # Your lecture notes (as plain text)<br>
+├── llama3/<br>
+│   └── lecsnote-chatbot-SimpleRetrievalQA-llama3.ipynb   		# Notebook version<br>
+│   └── lecsnote-chatbot-ConversationalRetrievalChain-llama3.ipynb   	# Notebook version<br>
+├── chroma\_db/                        # (auto-generated vector store on first run)<br>
+└── requirements.txt                  # Python dependencies<br>
 
 ⚙️ Requirements
 
