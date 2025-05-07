@@ -1,81 +1,68 @@
-# 📚 CTSE Lecture Notes Chatbot
 
-> SE4010 – Current Trends in Software Engineering (Semester 1, 2025)  
-> Assignment 2 – AI/ML: LLM Development Toolkit
+# 📘 CTSE Lecture Notes Chatbot – RetrievalQA with LLaMA3 (Ollama + LangChain)
 
----
+This project is a local, offline chatbot built using LangChain, ChromaDB, and Ollama (TinyLlama or LLaMA3). It allows users to ask questions based on lecture notes from the Current Trends in Software Engineering (SE4010) module at SLIIT.
 
-## ✨ Project Overview
+🧠 Features
 
-This project implements two versions of a chatbot using **LangChain**, **Hugging Face models**, and **ChromaDB**, capable of answering questions based on **CTSE lecture notes**.
+* Uses Retrieval-Augmented Generation (RAG) for accurate QA
+* Powered by local LLM (Ollama + LLaMA3 / TinyLlama) – no API keys needed
+* Loads lecture notes from .txt file and embeds with Sentence Transformers
+* Uses ChromaDB for fast vector-based retrieval
+* Streamlit UI for easy question-answer interaction
 
----
+📁 File Structure
 
-## 🚀 Features
-| Version | Features |
-|:---|:---|
-| **Simple RetrievalQA (Final)** | One-shot question answering, direct, fast, accurate |
-| **Conversational Retrieval (Advanced)** | Chat memory, multi-turn conversations, context retention |
+your\_project/
+│
+├── app.py                            # Streamlit web interface
+├── ctse\_lecture\_notes.txt            # Your lecture notes (as plain text)
+├── llama3/
+│   └── lecsnote-chatbot-SimpleRetrievalQA-llama3.ipynb   		# Notebook version
+│   └── lecsnote-chatbot-ConversationalRetrievalChain-llama3.ipynb   	# Notebook version
+├── chroma\_db/                        # (auto-generated vector store on first run)
+└── requirements.txt                  # Python dependencies
 
----
+⚙️ Requirements
 
-## 🛠️ Tech Stack
-- **Python**
-- **LangChain** – for LLM chaining
-- **Hugging Face Transformers** – for embeddings and LLMs
-- **Chroma** – vector database for efficient retrieval
-- **Jupyter Notebook** – implementation environment
+* Python 3.8+
+* Ollama installed and running locally
+* Recommended: LLaMA3 or TinyLlama model pulled via Ollama
 
----
+Install dependencies:
 
-## 📦 Installation
+pip install -r requirements.txt
 
-1. Clone the repository:
-```bash
-git clone https://github.com/chalaniS/LectureNotes_Chatbot-LLM
-cd ctse-chatbot
-````
+Start Ollama model:
 
-2. Install dependencies:
-```bash
-pip install langchain langchain-huggingface chromadb transformers torch
-```
+ollama run llama3
 
-3. Authenticate with Hugging Face (if necessary):
-```bash
-export HUGGINGFACEHUB_API_TOKEN=your_token_here
-```
+▶️ Run the App
 
----
+streamlit run app.py
 
-## 📂 Available Notebooks
+Then open [http://localhost:8501](http://localhost:8501) in your browser.
 
-| Notebook Name | Description |
-|:---|:---|
-| `lecsnote-chatbot-SimpleRetrievalQA.ipynb` | **[Primary for assignment]** Fast and accurate one-shot question answering using RetrievalQA |
-| `lecsnote-chatbot-ConversationalRetrievalChain.ipynb` | **[Advanced]** Multi-turn memory chatbot using ConversationalRetrievalChain |
+📝 How It Works
 
----
+1. TextLoader loads ctse\_lecture\_notes.txt
+2. The text is split using RecursiveCharacterTextSplitter
+3. Embeddings are created using sentence-transformers/all-MiniLM-L6-v2
+4. Vectors are stored in ChromaDB
+5. RetrievalQA fetches relevant chunks based on user query
+6. Ollama (LLaMA3) generates a response
 
-## 🧩 How It Works
+🧪 Dev Notes
 
-1. **Load** CTSE lecture notes from a PDF.
-2. **Split** the notes into manageable text chunks.
-3. **Generate embeddings** using `sentence-transformers/all-mpnet-base-v2`.
-4. **Store embeddings** inside ChromaDB.
-5. **Retrieve relevant context** for any question.
-6. **Answer** using `flan-t5-large` Hugging Face model.
+* The notebook in llama3/ can be used for experiments.
+* LLaMA3 and TinyLlama models tested via Ollama.
+* Ideal for low-latency, offline academic use cases.
 
----
+📚 References
 
-## 📜 Deliverables
-- **Jupyter Notebook** (Simple RetrievalQA version recommended)
-- **PDF Report**
-- **Video Demonstration** (2–3 min demo)
+* LangChain RAG Tutorial: [https://python.langchain.com/docs/tutorials/rag/](https://python.langchain.com/docs/tutorials/rag/)
+* ChromaDB: [https://docs.trychroma.com/](https://docs.trychroma.com/)
+* Ollama: [https://ollama.com/library/llama3](https://ollama.com/library/llama3)
+* Sentence Transformers: [https://www.sbert.net/](https://www.sbert.net/)
 
----
 
-## 📚 References
-- [LangChain RAG Tutorial](https://python.langchain.com/docs/tutorials/rag/)
-- [Hugging Face Model Hub](https://huggingface.co/models)
-- [ChromaDB Documentation](https://docs.trychroma.com/)
