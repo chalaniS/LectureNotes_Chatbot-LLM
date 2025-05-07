@@ -39,7 +39,14 @@ ollama run llama3
 
 ▶️ Run the App
 
-streamlit run app.py
+
+4. Start Ollama
+```ollama run tinyllama
+```
+---
+``streamlit run app.py
+``
+
 
 Then open [http://localhost:8501](http://localhost:8501) in your browser.
 
